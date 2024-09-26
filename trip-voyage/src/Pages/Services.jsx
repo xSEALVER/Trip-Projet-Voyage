@@ -5,7 +5,7 @@ import Prefooter from '../Components/Prefooter';
 import Footer from '../Components/Footer';
 
 
-function Home() {
+function Services() {
   return (
     <>
         <Navbar/>
@@ -16,4 +16,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Services

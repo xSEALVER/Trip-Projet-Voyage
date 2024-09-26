@@ -1,29 +1,35 @@
-import React from 'react';
-import { Navbar, Nav, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-const NavbarOf = () => {
-    return (
-        <Navbar bg="light" expand="lg">
-            <div className="container">
-                {/* Website Title */}
-                <Navbar.Brand href="/">Trippy</Navbar.Brand>
+function Navbar() {
+  return (
+    <nav className="bg-white shadow">
+      <ul className="flex justify-between items-center px-8 py-4">
+        {/* Left-aligned logo or brand name */}
+        <li className="text-gray-800 text-lg">
+          <Link to="/" className="hover:text-blue-600 transition">Trippy</Link>
+        </li>
+        
+        {/* Right-aligned navigation links */}
+        <div className="flex space-x-6">
+          <li>
+            <Link to="/about" className="text-gray-800 hover:text-blue-600 transition">About</Link>
+          </li>
+          <li>
+            <Link to="/contact" className="text-gray-800 hover:text-blue-600 transition">Contact</Link>
+          </li>
+          <li>
+            <Link to="/services" className="text-gray-800 hover:text-blue-600 transition">Services</Link>
+          </li>
+          <li>
+            <Link to="/signup" className="text-gray-800 hover:text-blue-600 transition">Sign Up</Link>
+          </li>
+          <li>
+            <Link to="/signin" className="text-gray-800 hover:text-blue-600 transition">Sign In</Link>
+          </li>
+        </div>
+      </ul>
+    </nav>
+  );
+}
 
-                {/* Navbar Toggle for mobile */}
-                <Navbar.Toggle aria-controls="navbar-nav" />
-
-                {/* Navbar Links */}
-                <Navbar.Collapse id="navbar-nav">
-                    <Nav className="ms-auto">
-                        <Nav.Link href="/about">About</Nav.Link>
-                        <Nav.Link href="/services">Services</Nav.Link>
-                        <Nav.Link href="/contact">Contact</Nav.Link>
-                        <Nav.Link href="/signup">Sign Up</Nav.Link>
-                        <Nav.Link href="/signin">Sign In</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </div>
-        </Navbar>
-    );
-};
-
-export default NavbarOf;
+export default Navbar;

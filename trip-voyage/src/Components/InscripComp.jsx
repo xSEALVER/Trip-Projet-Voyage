@@ -1,3 +1,100 @@
+// import { createUserWithEmailAndPassword } from "firebase/auth";
+// import React, { useState } from "react";
+// import { auth, db } from "./auth/Firebase";
+// import { setDoc, doc } from "firebase/firestore";
+
+// function InscripComp() {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [fname, setFname] = useState("");
+//   const [lname, setLname] = useState("");
+
+//   const handleRegister = async (e) => {
+//     e.preventDefault();
+//     try {
+//       await createUserWithEmailAndPassword(auth, email, password);
+//       const user = auth.currentUser;
+//       console.log(user);
+//       if (user) {
+//         await setDoc(doc(db, "Users", user.uid), {
+//           email: user.email,
+//           firstName: fname,
+//           lastName: lname,
+//           photo:""
+//         });
+//       }
+//       console.log("User Registered Successfully!!");
+//       toast.success("User Registered Successfully!!", {
+//         position: "top-center",
+//       });
+//     } catch (error) {
+//       console.log(error.message);
+//       toast.error(error.message, {
+//         position: "bottom-center",
+//       });
+//     }
+//   };
+
+//   return (
+//     <form onSubmit={handleRegister}>
+//       <h3>Sign Up</h3>
+
+//       <div className="mb-3">
+//         <label>First name</label>
+//         <input
+//           type="text"
+//           className="form-control"
+//           placeholder="First name"
+//           onChange={(e) => setFname(e.target.value)}
+//           required
+//         />
+//       </div>
+
+//       <div className="mb-3">
+//         <label>Last name</label>
+//         <input
+//           type="text"
+//           className="form-control"
+//           placeholder="Last name"
+//           onChange={(e) => setLname(e.target.value)}
+//         />
+//       </div>
+
+//       <div className="mb-3">
+//         <label>Email address</label>
+//         <input
+//           type="email"
+//           className="form-control"
+//           placeholder="Enter email"
+//           onChange={(e) => setEmail(e.target.value)}
+//           required
+//         />
+//       </div>
+
+//       <div className="mb-3">
+//         <label>Password</label>
+//         <input
+//           type="password"
+//           className="form-control"
+//           placeholder="Enter password"
+//           onChange={(e) => setPassword(e.target.value)}
+//           required
+//         />
+//       </div>
+
+//       <div className="d-grid">
+//         <button type="submit" className="btn btn-primary">
+//           Sign Up
+//         </button>
+//       </div>
+//       <p className="forgot-password text-right">
+//         Already registered <a href="/login">Login</a>
+//       </p>
+//     </form>
+//   );
+// }
+// export default InscripComp;
+
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth, db } from "./auth/Firebase";
@@ -20,7 +117,7 @@ function InscripComp() {
           email: user.email,
           firstName: fname,
           lastName: lname,
-          photo:""
+          photo: ""
         });
       }
       console.log("User Registered Successfully!!");
@@ -36,11 +133,11 @@ function InscripComp() {
   };
 
   return (
-    <form onSubmit={handleRegister}>
-      <h3>Sign Up</h3>
+    <form onSubmit={handleRegister} style={{ maxWidth: '400px', margin: '0 auto' }}>
+      <h3 className="my-12 text-center text-3xl">Inscription</h3>
 
-      <div className="mb-3">
-        <label>First name</label>
+      <div className="mb-2">
+        <label className="form-label">First Name</label>
         <input
           type="text"
           className="form-control"
@@ -50,8 +147,8 @@ function InscripComp() {
         />
       </div>
 
-      <div className="mb-3">
-        <label>Last name</label>
+      <div className="mb-2">
+        <label className="form-label">Last Name</label>
         <input
           type="text"
           className="form-control"
@@ -60,8 +157,8 @@ function InscripComp() {
         />
       </div>
 
-      <div className="mb-3">
-        <label>Email address</label>
+      <div className="mb-2">
+        <label className="form-label">Email</label>
         <input
           type="email"
           className="form-control"
@@ -71,8 +168,8 @@ function InscripComp() {
         />
       </div>
 
-      <div className="mb-3">
-        <label>Password</label>
+      <div className="mb-2">
+        <label className="form-label">Password</label>
         <input
           type="password"
           className="form-control"
@@ -82,15 +179,17 @@ function InscripComp() {
         />
       </div>
 
-      <div className="d-grid">
+      <div className="d-grid mb-3">
         <button type="submit" className="btn btn-primary">
           Sign Up
         </button>
       </div>
-      <p className="forgot-password text-right">
-        Already registered <a href="/login">Login</a>
+
+      <p className="text-center">
+        Already registered? <a href="/login">Login</a>
       </p>
     </form>
   );
 }
+
 export default InscripComp;

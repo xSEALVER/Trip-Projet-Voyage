@@ -1,48 +1,148 @@
-import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
-import { auth } from './auth/firebase';
-import { FaShoppingCart } from 'react-icons/fa';  // Import the shopping cart icon
+// import { Link } from 'react-router-dom';
 
-const NavbarPostSign = () => {
-    const navigate = useNavigate();
+// function Navbar() {
+//   return (
+//     <nav className="bg-white shadow">
+//       <ul className="flex justify-between items-center px-8 py-4">
+//         {/* Left-aligned logo or brand name */}
+//         <li className="text-gray-800 text-lg">
+//           <Link to="/" className="hover:text-blue-600 transition">Trippy</Link>
+//         </li>
+        
+//         {/* Right-aligned navigation links */}
+//         <div className="flex space-x-6">
+//           <li>
+//             <Link to="/aboutpost" className="text-gray-800 hover:text-blue-600 transition">About</Link>
+//           </li>
+//           <li>
+//             <Link to="/contactpost" className="text-gray-800 hover:text-blue-600 transition">Contact</Link>
+//           </li>
+//           <li>
+//             <Link to="/servicespost" className="text-gray-800 hover:text-blue-600 transition">Services</Link>
+//           </li>
+//           <li>
+//             <Link to="/signin" className="text-gray-800 hover:text-blue-600 transition">Log Out</Link>
+//           </li>
+//         </div>
+//       </ul>
+//     </nav>
+//   );
+// }
 
-    const handleLogout = async () => {
-        try {
-            await signOut(auth);
-            alert('You have been successfully logged out.');
-            navigate('/');
-        } catch (error) {
-            console.error('Logout error:', error.message);
-        }
-    };
+// export default Navbar;
 
-    return (
-        <Navbar bg="light" expand="lg">
-            <div className="container">
-                {/* Website Title */}
-                <Navbar.Brand href="/">Trippy</Navbar.Brand>
+// import { Link, useNavigate } from 'react-router-dom';
+// import { getAuth, signOut } from "firebase/auth";
 
-                {/* Navbar Toggle for mobile */}
-                <Navbar.Toggle aria-controls="navbar-nav" />
+// function Navbar() {
+//   const navigate = useNavigate(); // Hook to programmatically navigate
 
-                {/* Navbar Links */}
-                <Navbar.Collapse id="navbar-nav">
-                    <Nav className="ms-auto">
-                        <Nav.Link href="/about">About</Nav.Link>
-                        <Nav.Link href="/services">Services</Nav.Link>
-                        <Nav.Link href="/contact">Contact</Nav.Link>
-                        {/* Cart link with an icon */}
-                        <Nav.Link href="/cart">
-                            <FaShoppingCart style={{ marginRight: '5px' }} /> 
-                        </Nav.Link>
-                        <Nav.Link onClick={handleLogout}>Log Out</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </div>
-        </Navbar>
-    );
-};
+//   const handleLogout = async () => {
+//     const auth = getAuth(); // Get Firebase auth instance
+//     try {
+//       await signOut(auth); // Log out the user
+//       navigate('/'); // Redirect to the sign-in page after logout
+//     } catch (error) {
+//       console.error("Error logging out: ", error);
+//     }
+//   };
 
-export default NavbarPostSign;
+//   return (
+//     <nav className="bg-white shadow">
+//       <ul className="flex justify-between items-center px-8 py-4">
+//         {/* Left-aligned logo or brand name */}
+//         <li className="text-gray-800 text-lg">
+//           <Link to="/" className="hover:text-blue-600 transition">Trippy</Link>
+//         </li>
+        
+//         {/* Right-aligned navigation links */}
+//         <div className="flex space-x-6">
+//           <li>
+//             <Link to="/aboutpost" className="text-gray-800 hover:text-blue-600 transition">About</Link>
+//           </li>
+//           <li>
+//             <Link to="/contactpost" className="text-gray-800 hover:text-blue-600 transition">Contact</Link>
+//           </li>
+//           <li>
+//             <Link to="/servicespost" className="text-gray-800 hover:text-blue-600 transition">Services</Link>
+//           </li>
+//           <li>
+//             <button 
+//               onClick={handleLogout} 
+//               className="text-gray-800 hover:text-blue-600 transition"
+//             >
+//               Log Outt
+//             </button>
+//           </li>
+//         </div>
+//       </ul>
+//     </nav>
+//   );
+// }
+
+// export default Navbar;
+
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { getAuth, signOut } from "firebase/auth";
+
+function Navbar() {
+  const navigate = useNavigate(); // Hook to programmatically navigate
+  const [logoutAlert, setLogoutAlert] = useState(false); // State for logout alert
+
+  const handleLogout = async () => {
+    const auth = getAuth(); // Get Firebase auth instance
+    try {
+      await signOut(auth); // Log out the user
+      setLogoutAlert(true); // Show logout alert
+      setTimeout(() => {
+        navigate('/'); // Redirect to the homepage page after a short delay
+      }, 2000); // Delay before redirecting
+    } catch (error) {
+      console.error("Error logging out: ", error);
+    }
+  };
+
+  return (
+    <nav className="bg-white shadow">
+      <ul className="flex justify-between items-center px-8 py-4">
+        {/* Left-aligned logo or brand name */}
+        <li className="text-gray-800 text-lg">
+          <Link to="/" className="hover:text-blue-600 transition">Trippy</Link>
+        </li>
+        
+        {/* Right-aligned navigation links */}
+        <div className="flex space-x-6">
+          <li>
+            <Link to="/aboutpost" className="text-gray-800 hover:text-blue-600 transition">About</Link>
+          </li>
+          <li>
+            <Link to="/contactpost" className="text-gray-800 hover:text-blue-600 transition">Contact</Link>
+          </li>
+          <li>
+            <Link to="/servicespost" className="text-gray-800 hover:text-blue-600 transition">Services</Link>
+          </li>
+          <li>
+            <button 
+              onClick={handleLogout} 
+              className="text-gray-800 hover:text-blue-600 transition"
+            >
+              Log Out
+            </button>
+          </li>
+        </div>
+      </ul>
+
+      {/* Logout Alert */}
+      {logoutAlert && (
+        <div className=" bg-green-500 text-white p-4 rounded shadow-lg">
+          You have been logged out successfully!
+        </div>
+      )}
+    </nav>
+  );
+}
+
+export default Navbar;
+
+

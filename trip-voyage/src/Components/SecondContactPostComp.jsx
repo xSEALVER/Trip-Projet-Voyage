@@ -3,7 +3,7 @@ import { Form, Button, Container } from 'react-bootstrap';
 import { db } from '../Components/auth/firebase';  // Import the Firestore database
 import { collection, addDoc } from 'firebase/firestore'; // Firestore methods
 
-const SecondContactComponents = () => {
+const SecondContactPostComponents = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -101,4 +101,4 @@ const SecondContactComponents = () => {
   );
 };
 
-export default SecondContactPostComp;
+export default SecondContactPostComponents;
