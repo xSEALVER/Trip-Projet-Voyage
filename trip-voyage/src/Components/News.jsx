@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { collection, addDoc, getDocs, query, where } from 'firebase/firestore';
-import { db } from './auth/firebase';
+import { db } from './auth/Firebase';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';  // Import Bootstrap components
 
 const News = () => {

@@ -5,7 +5,7 @@ import MainAboutComponents from '../Components/MainAboutComponents';
 import SecondAboutComponents from '../Components/SecondAboutComponents';
 
 
-function Home() {
+function About() {
   return (
     <>
         <Navbar/>
@@ -16,4 +16,4 @@ function Home() {
   )
 }
 
-export default Home
+export default About
